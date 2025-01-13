@@ -1,0 +1,39 @@
+<!-- templates/admin/inventory.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <h1>Inventory</h1>
+        <a href="{{ url_for('admin.add_inventory') }}" class="btn btn-primary mb-3">Add New Inventory Item</a>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Stock Level</th>
+                    <th>Reorder Point</th>
+                    <th>Supplier</th>
+                    <th>Location</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in inventory_items %}
+                <tr>
+                    <td>{{ item.Product.Product_name }}</td>
+                    <td>{{ item.Stock_level }}</td>
+                    <td>{{ item.Reorder_point }}</td>
+                    <td>{{ item.Supplier.Supplier_name }}</td>
+                    <td>{{ item.Location.Location_name }}</td>
+                    <td>
+                        <a href="{{ url_for('admin.edit_inventory', inventory_id=item.Inventory_ID) }}" class="btn btn-warning btn-sm">Edit</a>
+                        <form action="{{ url_for('admin.delete_inventory', inventory_id=item.Inventory_ID) }}" method="POST" style="display:inline;">
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+                    </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

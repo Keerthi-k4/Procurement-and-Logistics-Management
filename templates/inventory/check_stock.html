@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}Low Stock Items Page{% endblock %}
+{% block content %}
+
+<div class="container">
+    <h2 class="text-center mb-4">Low Stock Items</h2>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="alert alert-warning">
+                <ul class="mb-0">
+                    {% for category, message in messages %}
+                        <li class="{{ category }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    {% if low_stock_items %}
+        <table class="table table-striped">
+            <thead class="thead-light">
+                <tr>
+                    <th>Product Name</th>
+                    <th>Location</th>
+                    <th>Stock Level</th>
+                    <th>Reorder Point</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in low_stock_items %}
+                    <tr>
+                        <td>{{ item.Product_name }}</td>
+                        <td>{{ item.Location_name }}</td>
+                        <td>{{ item.Stock_level }}</td>
+                        <td>{{ item.Reorder_point }}</td>
+                        <td>
+                            <!-- Button to trigger the procurement order creation -->
+                            <form method="POST" action="{{ url_for('routes.create_procurement_order') }}">
+                                <input type="hidden" name="inventory_id" value="{{ item.Inventory_ID }}">
+                                    <label for="order_quantity">Quantity:</label>
+                                <input type="number" name="order_quantity" id="order_quantity" required>
+                                <!-- Add the product price and reorder point calculation here -->
+                                 <label for="expected_delivery_date">Expected Delivery Date:</label>
+                                 <input type="date" name="expected_delivery_date" id="expected_delivery_date" required>
+                                <button type="submit" class="btn btn-primary btn-sm">Create Procurement Order</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p class="alert alert-info text-center">No items need to be reordered.</p>
+    {% endif %}
+</div>
+
+{% endblock %}

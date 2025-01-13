@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Supplier Information{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <header class="text-center mb-4">
+        <h1>Supplier Information</h1>
+    </header>
+
+    <div class="card p-4 shadow-sm">
+        <h2 class="h4 mb-3">Profile Details</h2>
+        <p><strong>Name:</strong> {{ supplier.Supplier_name }}</p>
+        <p><strong>Email:</strong> {{ supplier.Email }}</p>
+        <p><strong>Phone:</strong> {{ supplier.Phone_no }}</p>
+    </div>
+
+    <nav class="mt-4 text-center">
+        <a href="{{ url_for('routes.add_product') }}" class="btn btn-primary mx-2">Add Products to Inventory</a>
+        <a href="{{ url_for('routes.manage_products') }}" class="btn btn-primary mx-2">Product Management</a>
+    </nav>
+</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Delivered Shipments{% endblock %}
+{% block content %}
+    <h2>Delivered Shipments</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Shipment ID</th>
+                <th>Delivery Date</th>
+                <th>Customer Name</th>
+                <th>Warehouse Location</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for delivery in deliveries %}
+                <tr>
+                    <td>{{ delivery.Shipment_ID }}</td>
+                    <td>{{ delivery.Delivery_date }}</td>
+                    <td>{{ delivery.Customer_name }}</td>
+                    <td>{{ delivery.Location_name }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

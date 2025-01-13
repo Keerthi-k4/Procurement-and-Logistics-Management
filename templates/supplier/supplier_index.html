@@ -1,0 +1,19 @@
+
+{% extends "base.html" %}
+
+{% block title %}Supplier Management Dashboard{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="jumbotron text-center">
+            <h1 class="display-4">Supplier Management Dashboard</h1>
+            <p class="lead">Manage supplier data here.</p>
+            <hr class="my-4">
+            <div class="d-flex justify-content-center">
+                <a href="{{ url_for('routes.supplier_login') }}" class="btn btn-primary mx-2 btn-lg">Supplier Login</a>
+                <a href="{{ url_for('routes.create_supplier_account') }}" class="btn btn-primary mx-2 btn-lg">Supplier Create Account</a>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

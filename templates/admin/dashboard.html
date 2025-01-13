@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <!-- Jumbotron for Admin Dashboard -->
+        <div class="jumbotron text-center">
+            <h1 class="display-4">Admin Dashboard</h1>
+            <p class="lead">Manage all aspects of your platform from here.</p>
+            <hr class="my-4">
+
+            <!-- Links to various admin actions -->
+            <div class="d-flex justify-content-center">
+                <a href="{{ url_for('admin.list_customers') }}" class="btn btn-primary mx-2 btn-lg">Manage Customers</a>
+                <a href="{{ url_for('admin.list_suppliers') }}" class="btn btn-primary mx-2 btn-lg">Manage Suppliers</a>
+                <a href="{{ url_for('admin.list_products') }}" class="btn btn-primary mx-2 btn-lg">Manage Products</a>
+                <a href="{{ url_for('admin.list_inventory') }}" class="btn btn-primary mx-2 btn-lg">Manage Inventory</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

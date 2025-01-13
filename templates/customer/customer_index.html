@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Customer Management{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="jumbotron text-center">
+            <h1 class="display-4">Customer Management Dashboard</h1>
+            <p class="lead">Access your account, view products, and manage your orders from here.</p>
+            <hr class="my-4">
+            <div class="d-flex justify-content-center">
+                <a href="{{ url_for('routes.customer_login') }}" class="btn btn-primary mx-2 btn-lg">Customer Login</a>
+                <a href="{{ url_for('routes.create_account') }}" class="btn btn-primary mx-2 btn-lg">Create New Account</a>
+                <a href="{{ url_for('routes.products_page') }}" class="btn btn-primary mx-2 btn-lg">View Products</a>
+                <a href="{{ url_for('routes.customer_orders') }}" class="btn btn-primary mx-2 btn-lg">View Your Orders</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

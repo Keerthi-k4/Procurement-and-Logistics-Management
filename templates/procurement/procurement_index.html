@@ -1,0 +1,19 @@
+
+{% extends "base.html" %}
+
+{% block title %}Procurement Management Dashboard{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="jumbotron text-center">
+            <h1 class="display-4">Procurement Management Dashboard</h1>
+            <p class="lead">Manage procurement here.</p>
+            <hr class="my-4">
+            <div class="d-flex justify-content-center">
+                <a href="{{ url_for('routes.create_order') }}" class="btn btn-primary mx-2 btn-lg">Create Purchase Order</a>
+                <a href="{{ url_for('routes.view_orders') }}" class="btn btn-primary mx-2 btn-lg">View Orders</a>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
