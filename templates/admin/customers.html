@@ -1,0 +1,36 @@
+<!-- manage_customers.html -->
+{% extends 'base.html' %}
+
+{% block title %}Manage Customers{% endblock %}
+
+{% block content %}
+    <h1>Manage Customers</h1>
+    <a href="{{ url_for('admin.add_customer') }}" class="btn btn-primary mb-3">Add Customer</a>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for customer in customers %}
+            <tr>
+                <td>{{ customer.Customer_ID }}</td>
+                <td>{{ customer.Customer_name }}</td>
+                <td>{{ customer.Phone_no }}</td>
+                <td>{{ customer.Email }}</td>
+                <td>
+                    <a href="{{ url_for('admin.edit_customer', customer_id=customer.Customer_ID) }}" class="btn btn-warning btn-sm">Edit</a>
+                    <form action="{{ url_for('admin.delete_customer', customer_id=customer.Customer_ID) }}" method="POST" style="display: inline;">
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

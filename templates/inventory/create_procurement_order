@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Products Page{% endblock %}
+{% block content %}
+<body>
+    <h2>Create Procurement Orders for Low Stock Items</h2>
+    <form method="POST" action="{{ url_for('routes.create_procurement_order') }}">
+        <table>
+            <thead>
+                <tr>
+                    <th>Select</th>
+                    <th>Product Name</th>
+                    <th>Location</th>
+                    <th>Stock Level</th>
+                    <th>Reorder Point</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in low_stock_items %}
+                <tr>
+                    <td>
+                        <input type="checkbox" name="selected_items" value="{{ item.Inventory_ID }}">
+                    </td>
+                    <td>{{ item.Product.Product_name }}</td>
+                    <td>{{ item.Location.Location_name }}</td>
+                    <td>{{ item.Stock_level }}</td>
+                    <td>{{ item.Reorder_point }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <button type="submit" name="action" value="order_selected">Order Selected</button>
+        <button type="submit" name="action" value="order_all">Order All</button>
+    </form>
+
+{% endblock %}
+

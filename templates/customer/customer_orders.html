@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}Customer Orders{% endblock %}
+{% block content %}
+
+<div class="container my-4">
+    <h2 class="text-center mb-4">Your Orders</h2>
+
+    <!-- Orders Table -->
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Order ID</th>
+                <th>Order Date</th>
+                <th>Status</th>
+                <th>Total Amount</th>
+                <th>Quantity</th>
+                <th>Product Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+            <tr>
+                <td>{{ order.Customer_order_ID }}</td>
+                <td>{{ order.Order_date }}</td>
+                <td>{{ order.Status }}</td>
+                <td>${{ "%.2f"|format(order.Total_amount) }}</td>
+                <td>{{ order.Quantity }}</td>
+                <td>{{ order.Product_name }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Product Category Count Table -->
+    <h3 class="text-center mt-5">Product Category Count</h3>
+    <table class="table table-bordered table-striped mt-3">
+        <thead class="thead-dark">
+            <tr>
+                <th>Category</th>
+                <th>Number of Products</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for category in category_counts %}
+            <tr>
+                <td>{{ category.Category }}</td>
+                <td>{{ category.product_count }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

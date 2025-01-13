@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Manage Suppliers{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Manage Suppliers</h1>
+    <a href="{{ url_for('admin.add_supplier') }}" class="btn btn-primary mb-3">Add Supplier</a>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for supplier in suppliers %}
+            <tr>
+                <td>{{ supplier.Supplier_ID }}</td>
+                <td>{{ supplier.Supplier_name }}</td>
+                <td>{{ supplier.Phone_no }}</td>
+                <td>{{ supplier.Email }}</td>
+                <td>
+                    <a href="{{ url_for('admin.edit_supplier', supplier_id=supplier.Supplier_ID) }}" class="btn btn-warning btn-sm">Edit</a>
+                    <form action="{{ url_for('admin.delete_supplier', supplier_id=supplier.Supplier_ID) }}" method="POST" style="display: inline;">
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

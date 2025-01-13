@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Shipment Status{% endblock %}
+{% block content %}
+    <h2>Shipment Status</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Shipment ID</th>
+                <th>Status</th>
+                <th>Delivery Date</th>
+                <th>Customer Name</th>
+                <th>Product Name</th>
+                <th>Warehouse Location</th>
+                <th>Customer Location</th>  <!-- New column for Customer Location -->
+                <th>Update Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for shipment in shipments %}
+                <tr>
+                    <td>{{ shipment.Shipment_ID }}</td>
+                    <td>{{ shipment.Shipment_status }}</td>
+                    <td>{{ shipment.Delivery_date }}</td>
+                    <td>{{ shipment.Customer_name }}</td>
+                    <td>{{ shipment.Product_name }}</td>
+                    <td>{{ shipment.Warehouse_Location }}</td>
+                    <td>{{ shipment.Customer_Location }}</td>  <!-- Display Customer Location -->
+                    <td>
+                        <form method="POST" action="{{ url_for('routes.update_shipment_status') }}">
+                            <input type="hidden" name="shipment_id" value="{{ shipment.Shipment_ID }}">
+                            <select name="new_status" class="form-control" required>
+                                <option value="Scheduled">Scheduled</option>
+                                <option value="In Transit">In Transit</option>
+                                <option value="Delivered">Delivered</option>
+                            </select>
+                            <button type="submit" class="btn btn-primary mt-2">Update</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

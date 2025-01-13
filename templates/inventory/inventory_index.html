@@ -1,0 +1,19 @@
+
+{% extends "base.html" %}
+
+{% block title %}Inventory Management Dashboard{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="jumbotron text-center">
+            <h1 class="display-4">Inventory Management Dashboard</h1>
+            <p class="lead">Manage inventory items here.</p>
+            <hr class="my-4">
+            <div class="d-flex justify-content-center">
+                <a href="{{ url_for('routes.check_stock') }}" class="btn btn-primary mx-2 btn-lg">Check Low Stock Items</a>
+                <a href="{{ url_for('routes.view_inventory') }}" class="btn btn-primary mx-2 btn-lg">View Inventory</a>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

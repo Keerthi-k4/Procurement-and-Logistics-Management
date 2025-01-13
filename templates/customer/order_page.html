@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Order Confirmation{% endblock %}
+{% block content %}
+
+<div class="container my-5">
+    <div class="text-center">
+        <h2 class="text-success mb-4">Order Placed Successfully!</h2>
+        <p class="lead">Thank you for your order. Here are your order details:</p>
+    </div>
+
+    <div class="card p-4">
+        <table class="table table-bordered">
+            <thead class="thead-light">
+                <tr>
+                    <th>Product Name</th>
+                    <th>Quantity</th>
+                    <th>Total Amount</th>
+                    <th>Order Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ order_details.product_name }}</td>
+                    <td>{{ order_details.quantity }}</td>
+                    <td>${{ "%.2f"|format(order_details.total_amount) }}</td>
+                    <td>{{ order_details.order_date.strftime('%Y-%m-%d') }}</td>
+                    <td>{{ order_details.status }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="text-center mt-4">
+        <a href="{{ url_for('routes.customer_orders') }}" class="btn btn-primary">View All Your Orders</a>
+    </div>
+</div>
+
+{% endblock %}

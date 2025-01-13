@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Shipment Status{% endblock %}
+{% block content %}
+
+<div class="container mt-5">
+    <header class="text-center mb-4">
+        <h1>Create Purchase Order</h1>
+    </header>
+
+    <div class="card p-4">
+        <form method="POST">
+            <div class="form-group mb-3">
+                <label for="supplier_id">Select Supplier:</label>
+                <select id="supplier_id" name="supplier_id" class="form-control" required>
+                    {% for supplier in suppliers %}
+                    <option value="{{ supplier.Supplier_ID }}">{{ supplier.Supplier_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="total_cost">Total Cost:</label>
+                <input type="number" id="total_cost" name="total_cost" step="0.01" class="form-control" required>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="expected_delivery_date">Expected Delivery Date:</label>
+                <input type="date" id="expected_delivery_date" name="expected_delivery_date" class="form-control" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Create Order</button>
+        </form>
+    </div>
+
+    <nav class="mt-4">
+        <a href="{{ url_for('routes.procurement_dashboard') }}" class="btn btn-secondary">Back to Dashboard</a>
+    </nav>
+</div>
+
+{% endblock %}

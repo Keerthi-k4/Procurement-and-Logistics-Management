@@ -1,0 +1,20 @@
+
+
+{% extends "base.html" %}
+
+{% block title %}Logistics Management Dashboard{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="jumbotron text-center">
+            <h1 class="display-4">Logistics Management Dashboard</h1>
+            <p class="lead">Manage logistics here.</p>
+            <hr class="my-4">
+            <div class="d-flex justify-content-center">
+                <a href="{{ url_for('routes.shipment_status') }}" class="btn btn-primary mx-2 btn-lg">View Shipment Status</a>
+                <a href="{{ url_for('routes.view_deliveries') }}" class="btn btn-primary mx-2 btn-lg">View Delivered Shipments</a>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

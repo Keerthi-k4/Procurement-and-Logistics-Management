@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Products Page{% endblock %}
+{% block content %}
+
+<header class="text-center mb-4">
+    <h1>Inventory Management System</h1>
+</header>
+
+<div class="container">
+    <h2 class="text-center mb-4">Inventory Details by Location</h2>
+
+    {% if location_inventory %}
+        {% for location, items in location_inventory.items() %}
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="card-title">{{ location }}</h3>
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>Product Name</th>
+                                <th>Stock Level</th>
+                                <th>Reorder Point</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in items %}
+                                <tr>
+                                    <td>{{ item.Product_name }}</td>
+                                    <td>{{ item.Stock_level }}</td>
+                                    <td>{{ item.Reorder_point }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p class="alert alert-warning text-center">No inventory items found.</p>
+    {% endif %}
+</div>
+
+{% endblock %}

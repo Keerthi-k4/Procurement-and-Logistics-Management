@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Landing Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f2f5;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .role-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+        }
+        .role-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Logistics and Procurement System</h1>
+    <div class="button-container">
+        <a href="/customer" class="role-button">Customer</a>
+        <a href="/inventory" class="role-button">Inventory Manager</a>
+        <a href="/procurement" class="role-button">Procurement Officer</a>
+        <a href="/logistics" class="role-button">Logistics Coordinator</a>
+        <a href="/supplier" class="role-button">Supplier</a>
+        <a href="/admin" class="role-button">Admin</a>
+
+    </div>
+</body>
+</html>
